@@ -15,26 +15,38 @@ function Dice(){
 }
 
 let dice = new Dice;
-let rollValue=0;
 //let rollValues=[];
-
+let rollValue=0;
 Dice.prototype.roll = function() {
   rollValue = Math.floor(Math.random()*6)+1;
   //this.rollValues.push(rollValue);
 }
 
-dice.roll();
-console.log(rollValue);
-console.log(rollValues);
+//let rollValues =dice.roll();
+//console.log(rollValue);
+//console.log(rollValues);
 
-Gamer.prototype.updateUserScore=function(gamer1){
-  this.gamer1.currentScore+=rollValue;
-  this.gamer2.currentScore+=rollValue;
+Gamer.prototype.updateUserScore=function(currentScore){
+  this.currentScore+=rollValue;
+  //this.gamer2.currentScore+=rollValue;
 }
 
+function attachButtonListeners() {
+  $("button#player1roll").on("click", function () {
+    dice.roll();
+    //console.log(rollValue);
+    console.log(gamer1.currentScore);
+    gamer1.updateUserScore(gamer1.currentScore);
+    //displayUserScore(userScore);
+    //displayTotalUserScore(totalUserScore);
+    console.log(rollValue);
+    console.log(gamer1.currentScore);
+  });
+};
 
 
 $(document).ready(function() {
+  attachButtonListeners();
   // gamer 1 click on gamer1RollButton=> then we get rollValue for gamer1
   // gamer1.updateUserScore(currentScore());
   // gamer 2 click on gamer2RollButton=> then we get rollValue for gamer1
