@@ -28,16 +28,23 @@ Dice.prototype.roll = function() {
 
 Gamer.prototype.updateUserScore=function(currentScore){
   this.currentScore+=rollValue;
-  //this.gamer2.currentScore+=rollValue;
 }
+
+Gamer.prototype.displayUserScore=function(currentScore) {
+  let refer = $("div#player1CurrentRoll");
+  let htmlForPlayer1CurrentScore = "";
+  htmlForPlayer1CurrentScore+="<p>" + currentScore + "</p>";
+  refer.html(htmlForPlayer1CurrentScore);
+};
+
+
 
 function attachButtonListeners() {
   $("button#player1roll").on("click", function () {
     dice.roll();
-    //console.log(rollValue);
     console.log(gamer1.currentScore);
     gamer1.updateUserScore(gamer1.currentScore);
-    //displayUserScore(userScore);
+    gamer1.displayUserScore(gamer1.currentScore);
     //displayTotalUserScore(totalUserScore);
     console.log(rollValue);
     console.log(gamer1.currentScore);
@@ -46,7 +53,8 @@ function attachButtonListeners() {
 
 
 $(document).ready(function() {
-  attachButtonListeners();
+  attachButtonListeners(gamer1.currentScore);
+    //event.preventDefault();
   // gamer 1 click on gamer1RollButton=> then we get rollValue for gamer1
   // gamer1.updateUserScore(currentScore());
   // gamer 2 click on gamer2RollButton=> then we get rollValue for gamer1
