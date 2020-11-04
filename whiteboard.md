@@ -1,0 +1,5 @@
+Gamer:
+  Name
+  CurrentScore
+  TotalScore
+
