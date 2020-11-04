@@ -15,8 +15,9 @@
 | Create object for New Gamer | gamer1 = new Gamer(0, 0) | gamer1  {0, 0} |
 | Dice.roll() | | |
 | Return random number from 1-6 and push into array. | dice.roll() | rollValues [3, 5, 2, 3, 6, 5] |
-|
-
+| updateUserScore() | | |
+| This function returns currentScore for the user, adding on every subsequent roll, then returning updated currentScore | gamer1.updateCurrentScore(gamer1.currentScore)
+| gamer1.currentScore += rollValue |
 
 
 ## Setup/Installation Requirements
