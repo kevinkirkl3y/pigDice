@@ -41,8 +41,9 @@ View my live website here:
 
 ## Support and contact detail
 
-<kevinmkirkley@gmail.com>
-<natalindria@gmail.com>
+* <kevinmkirkley@gmail.com>
+* <natalindria@gmail.com>
+* <tawneeh@icloud.com>
 
 ## Technologies Used 
 
