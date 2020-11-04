@@ -23,6 +23,16 @@ currentScore += rollValue // pretends to be a loop // currentScore = 0 at start 
 
 buttons Roll Hold
 
+function attachButtonListeners() {
+  $("#buttons").on("click", ".deleteButton", function () {
+    addressBook.deleteContact(this.id);
+    $("#show-contact").hide();
+    displayUserScore(userScore);
+    displayTotalUserScore(totalUserScore);
+  });
+};
+
+
 function switchturn to activate gamer's2 buttons
 
 if else branch 
