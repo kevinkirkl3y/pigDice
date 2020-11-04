@@ -13,6 +13,9 @@
 | :-----------------------------------| :------------- | :------------- |
 | Gamer(gamerName, currentScore, totalScore) | | | 
 | Create object for New Gamer | gamer1 = new Gamer("Kevin", 0,0) | gamer1 {"Kevin", 0, 0} |
+| Dice.roll() | | |
+| Return random number from 1-6 and push into array. | dice.roll() | rollValues [3, 5, 2, 3, 6, 5] |
+|
 
 
 

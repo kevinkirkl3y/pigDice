@@ -9,7 +9,7 @@ Dice
 
 dice= new Dice = function(roll){
   random
-}  
+} 
 
 buttons Roll Hold
 
