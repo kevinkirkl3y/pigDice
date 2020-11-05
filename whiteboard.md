@@ -11,8 +11,9 @@ else if the hold button .click()
   then .toggle() to nextGamer
 else dice.roll (keep going) 
 
-* If a 1 is rolled - within Dice.roll (if rollValue = 1 currentScore would = 0 and switch user turn)
 * If total is equal to or more than 100 - within updateUserTotal Score ( if statement that if total score >= 100 display winner)
 * Activate gamer2 - buttonListeners?
 * Switch between players on rollValue = 1 or on hold button click - could be done through DOM? Buttons only show on player turn. Or function deactivate. Or both/mix of the two.
 (Or switch gears to one roll button, and a hold button or each player.)
+
+// If a 1 is rolled - within Dice.roll (rollValue = 1 currentScore would = 0)
