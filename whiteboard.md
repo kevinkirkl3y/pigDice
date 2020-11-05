@@ -1,44 +1,18 @@
-Gamer:
-  Name
-  CurrentScore
-  TotalScore
-gamer1=new Gamer(Name, CS,TS) 
-
-totalScore: totalScore += currentScore at end of turn
-if user rolls 1 totalScore stays the same
-
-if totalScore >= 100 alert(user wins!!!)
-
-Dice
-  this.numer=6
-
-dice= new Dice = function(roll){
-  random
-} 
 Update current score and total score
 While second game button is inactive
 currentScore += rollValue // pretends to be a loop // currentScore = 0 at start of round (at first click of roll function) 
 
-
-
-buttons Roll Hold
-
-function attachButtonListeners() {
-  $("#buttons").on("click", ".deleteButton", function () {
-    addressBook.deleteContact(this.id);
-    $("#show-contact").hide();
-    displayUserScore(userScore);
-    displayTotalUserScore(totalUserScore);
-  });
-};
-
-
 function switchturn to activate gamer's2 buttons
 
-if else branch 
-
+if else branch: 
 if currentGamer rollValue === 1
   then .toggle() to nextGamer
 else if the hold button .click()
   then .toggle() to nextGamer
 else dice.roll (keep going) 
+
+* If a 1 is rolled - within Dice.roll (if rollValue = 1 currentScore would = 0 and switch user turn)
+* If total is equal to or more than 100 - within updateUserTotal Score ( if statement that if total score >= 100 display winner)
+* Activate gamer2 - buttonListeners?
+* Switch between players on rollValue = 1 or on hold button click - could be done through DOM? Buttons only show on player turn. Or function deactivate. Or both/mix of the two.
+(Or switch gears to one roll button, and a hold button or each player.)

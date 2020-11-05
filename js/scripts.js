@@ -6,11 +6,15 @@ function Gamer(currentScore, totalScore) {
 };
 Gamer.prototype.updateUserScore=function(currentScore){
   this.currentScore+=rollValue;
+  if (rollValue === 1) {
+    gamer1.currentScore = 0;
+    gamer1.displayUserTotalScore(gamer1.totalScore);
+  }
 };
 
 Gamer.prototype.updateTotalScore=function(currentScore){
   this.totalScore += currentScore;
-  currentScore = 0;
+  //currentScore = 0;
 };
 
 
@@ -28,6 +32,13 @@ Gamer.prototype.displayUserTotalScore=function(totalScore){
   refer.html(htmlForPlayer1TotalScore);
 };
 
+Gamer.prototype.displayRollValue=function(rollValue){
+  let refer = $("div#player1DieValue");
+  let htmlForPlayer1DieValue = "";
+  htmlForPlayer1DieValue+="<p>" + rollValue + "</p>";
+  refer.html(htmlForPlayer1DieValue);
+};
+
 let gamer1=new Gamer(0,0);
 let gamer2=new Gamer(0,0);
 
@@ -42,6 +53,11 @@ let dice = new Dice;
 let rollValue=0;
 Dice.prototype.roll = function() {
   rollValue = Math.floor(Math.random()*6)+1;
+  // if (rollValue === 1) {
+  //   gamer1.currentScore = 0;
+  //   console.log(rollValue);
+  //   console.log(gamer1.currentScore);
+  // }
   //this.rollValues.push(rollValue);
 }
 
@@ -50,15 +66,16 @@ function attachButtonRollListeners() {
     dice.roll();
     gamer1.updateUserScore(gamer1.currentScore);
     gamer1.displayUserScore(gamer1.currentScore);
+    gamer1.displayRollValue(rollValue);
     //displayTotalUserScore(totalUserScore);
   });
+
 };  
 function attachButtonHoldListeners() {
   $("button#player1hold").on("click", function () {
     gamer1.updateTotalScore(gamer1.currentScore);
     gamer1.displayUserTotalScore(gamer1.totalScore);
     gamer1.currentScore=0;
-    
     
   });
 }
