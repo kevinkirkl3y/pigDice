@@ -4,6 +4,19 @@ function Gamer(currentScore, totalScore) {
   this.currentScore = currentScore;
   this.totalScore = totalScore;
 };
+Gamer.prototype.updateUserScore=function(currentScore){
+  this.currentScore+=rollValue;
+}
+
+Gamer.prototype.displayUserScore=function(currentScore) {
+  let refer = $("div#player1CurrentRoll");
+  let htmlForPlayer1CurrentScore = "";
+  htmlForPlayer1CurrentScore+="<p>" + currentScore + "</p>";
+  refer.html(htmlForPlayer1CurrentScore);
+};
+// Gamer.prototype.updateUserTotalScore = function(totalScore) {
+//   this.totalScore+=currentScore;
+//}
 
 let gamer1=new Gamer(0,0);
 let gamer2=new Gamer(0,0);
@@ -22,38 +35,39 @@ Dice.prototype.roll = function() {
   //this.rollValues.push(rollValue);
 }
 
-//let rollValues =dice.roll();
-//console.log(rollValue);
-//console.log(rollValues);
-
-Gamer.prototype.updateUserScore=function(currentScore){
-  this.currentScore+=rollValue;
-}
-
-Gamer.prototype.displayUserScore=function(currentScore) {
-  let refer = $("div#player1CurrentRoll");
-  let htmlForPlayer1CurrentScore = "";
-  htmlForPlayer1CurrentScore+="<p>" + currentScore + "</p>";
-  refer.html(htmlForPlayer1CurrentScore);
-};
-
-
-
-function attachButtonListeners() {
+function attachButtonRollListeners() {
   $("button#player1roll").on("click", function () {
     dice.roll();
-    console.log(gamer1.currentScore);
     gamer1.updateUserScore(gamer1.currentScore);
     gamer1.displayUserScore(gamer1.currentScore);
     //displayTotalUserScore(totalUserScore);
-    console.log(rollValue);
+  });
+};  
+function attachButtonHoldListeners() {
+  $("button#player1hold").on("click", function () {
+    console.log(gamer1.currentScore);
+    console.log(gamer1.totalScore);
+    gamer1.totalScore += gamer1.currentScore;
+    console.log(gamer1.totalScore);
+    gamer1.currentScore = 0;
     console.log(gamer1.currentScore);
   });
-};
+}
+    
+    
+    // dice.roll();
+    // console.log(gamer1.currentScore);
+    // gamer1.updateUserScore(gamer1.currentScore);
+    // gamer1.displayUserScore(gamer1.currentScore);
+    // //displayTotalUserScore(totalUserScore);
+    // console.log(rollValue);
+    // console.log(gamer1.currentScore);
+
 
 
 $(document).ready(function() {
-  attachButtonListeners(gamer1.currentScore);
+  attachButtonRollListeners(gamer1.currentScore);
+  attachButtonHoldListeners(gamer1.totalScore);
     //event.preventDefault();
   // gamer 1 click on gamer1RollButton=> then we get rollValue for gamer1
   // gamer1.updateUserScore(currentScore());

@@ -17,8 +17,12 @@
 | Return random number from 1-6 and push into array. | dice.roll() | rollValues [3, 5, 2, 3, 6, 5] |
 | updateUserScore() | | |
 | This function returns currentScore for the user, adding on every subsequent roll, then returning updated currentScore | gamer1.updateCurrentScore(gamer1.currentScore)| gamer1.currentScore += rollValue |
-|Gamer.prototype.displayUserScore |||
-|This method should display the currentScore that has been generated when the user clicks the roll button multiple times. | gamer1.displayUserScore(gamer1currentScore) | gamer1.currentScore to show in current roll section
+| Gamer.prototype.displayUserScore |||
+| This method should display the currentScore that has been generated when the user clicks the roll button multiple times. | gamer1.displayUserScore(gamer1currentScore) | gamer1.currentScore to show in current roll section |
+| attachButtonHoldListener() |||
+| This function returns totalScore for user after user clicks on 'hold' button. | gamer1.totalScore ====> totalScore | gamer1.totalScore += currentScore |
+
+
 
 
 ## Setup/Installation Requirements
