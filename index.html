@@ -11,7 +11,7 @@
 </head>
 <body>
 <h1 class="jumbotron text-center">Pig Rollin'</h1>
-<div class="container">
+<div class="container" id="player-cards">
   <div class="row">
     <div class="col-md-6">
       <div class="card">
@@ -22,15 +22,13 @@
               <div class="card-title">
               <h5>Die Value</h5>
                 <div class="card-body" id="player1DieValue">
-                  
                 </div>
               </div>
             </div>  
             <div class="card">
               <div class="card-title">
               <h5>Current Roll</h5>
-                <div class="card-body" id="player1CurrentRoll">
-                  
+                <div class="card-body" id="player1CurrentRoll">            
                 </div>
               </div>
             </div>
@@ -38,7 +36,6 @@
               <div class="card-title">
               <h5>Total Score</h5>
                 <div class="card-body" id="player1TotalScore">
-
                 </div>
               </div>
             </div>
@@ -56,8 +53,7 @@
             <div class="card">
               <div class="card-title">
               <h5>Die Value</h5>
-                <div class="card-body" id="player2DieValue">
-                  
+                <div class="card-body" id="player2DieValue">  
                 </div>
               </div>
             </div> 
@@ -73,7 +69,6 @@
               <div class="card-title">
               <h5>Total Score</h5>
                 <div class="card-body" id="player2TotalScore">
-
                 </div>
               </div>
             </div>
@@ -83,9 +78,11 @@
         <button type="button" class="btn btn-danger" id="player2hold">Hold</button>
       </div>
     </div>
-    <div class="card">
-      <div class="card-body" id="winner">
-      </div>
+  </div>
+</div>
+<div class="container" id="winner-card">
+  <div class="card">
+    <div class="card-body" id="winner">
     </div>
   </div>
 </div>
