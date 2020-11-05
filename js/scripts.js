@@ -6,7 +6,13 @@ function Gamer(currentScore, totalScore) {
 };
 Gamer.prototype.updateUserScore=function(currentScore){
   this.currentScore+=rollValue;
-}
+};
+
+Gamer.prototype.updateTotalScore=function(currentScore){
+  this.totalScore += currentScore;
+  currentScore = 0;
+};
+
 
 Gamer.prototype.displayUserScore=function(currentScore) {
   let refer = $("div#player1CurrentRoll");
@@ -14,9 +20,13 @@ Gamer.prototype.displayUserScore=function(currentScore) {
   htmlForPlayer1CurrentScore+="<p>" + currentScore + "</p>";
   refer.html(htmlForPlayer1CurrentScore);
 };
-// Gamer.prototype.updateUserTotalScore = function(totalScore) {
-//   this.totalScore+=currentScore;
-//}
+
+Gamer.prototype.displayUserTotalScore=function(totalScore){
+  let refer = $("div#player1TotalScore");
+  let htmlForPlayer1TotalScore = "";
+  htmlForPlayer1TotalScore+="<p>" + totalScore + "</p>";
+  refer.html(htmlForPlayer1TotalScore);
+};
 
 let gamer1=new Gamer(0,0);
 let gamer2=new Gamer(0,0);
@@ -45,25 +55,14 @@ function attachButtonRollListeners() {
 };  
 function attachButtonHoldListeners() {
   $("button#player1hold").on("click", function () {
-    console.log(gamer1.currentScore);
-    console.log(gamer1.totalScore);
-    gamer1.totalScore += gamer1.currentScore;
-    console.log(gamer1.totalScore);
-    gamer1.currentScore = 0;
-    console.log(gamer1.currentScore);
+    gamer1.updateTotalScore(gamer1.currentScore);
+    gamer1.displayUserTotalScore(gamer1.totalScore);
+    gamer1.currentScore=0;
+    
+    
   });
 }
     
-    
-    // dice.roll();
-    // console.log(gamer1.currentScore);
-    // gamer1.updateUserScore(gamer1.currentScore);
-    // gamer1.displayUserScore(gamer1.currentScore);
-    // //displayTotalUserScore(totalUserScore);
-    // console.log(rollValue);
-    // console.log(gamer1.currentScore);
-
-
 
 $(document).ready(function() {
   attachButtonRollListeners(gamer1.currentScore);
