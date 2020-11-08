@@ -1,17 +1,23 @@
 
 // Gamer Business Logic
-function Gamer(gamerName, currentScore, totalScore) {
+function Gamer(gamerName, rollValue, currentScore, totalScore) {
   this.gamerName = gamerName;
+  this.rollValue = rollValue;
   this.currentScore = currentScore;
   this.totalScore = totalScore;
- // this.dice=dice;
 };
+
 Gamer.prototype.updateUserScore = function (currentScore) {
-  this.currentScore += rollValue;
-  if (rollValue === 1) {
-    gamer1.currentScore = 0;
-    gamer1.displayUserTotalScore(gamer1.totalScore);
+  
+  this.currentScore += this.rollValue;
+  console.log(this.currentScore);
+  if (this.rollValue === 1) {
+    this.currentScore = 0;
+    console.log(this.currentScore);
+    this.displayUserTotalScore(this.totalScore);
   }
+  
+  
 };
 
 Gamer.prototype.updateTotalScore = function (currentScore) {
@@ -30,67 +36,68 @@ Gamer.prototype.updateTotalScore = function (currentScore) {
 
 
 Gamer.prototype.displayUserScore = function (currentScore) {
-  if (this.currentScore === gamer1.currentScore) {
-    let refer = $("div#player1CurrentRoll");
+  if (this.rollValue === gamer1.rollValue) {
+    let refer1 = $("div#player1CurrentRoll");
     let htmlForPlayer1CurrentScore = "";
-    htmlForPlayer1CurrentScore += "<p>" + currentScore + "</p>";
-    refer.html(htmlForPlayer1CurrentScore);
-  } 
-   else if (this.currentScore === gamer2.currentScore){
-    let refer = $("div#player2CurrentRoll");
+    htmlForPlayer1CurrentScore += "<p>" + gamer1.currentScore + "</p>";
+    refer1.html(htmlForPlayer1CurrentScore);
+  }
+  else if (this.rollValue === gamer2.rollValue) {
+    let refer2 = $("div#player2CurrentRoll");
     let htmlForPlayer2CurrentScore = "";
-    htmlForPlayer2CurrentScore += "<p>" + currentScore + "</p>";
-    refer.html(htmlForPlayer2CurrentScore);
+    htmlForPlayer2CurrentScore += "<p>" + gamer2.currentScore + "</p>";
+    console.log(htmlForPlayer2CurrentScore);
+    refer2.html(htmlForPlayer2CurrentScore);
   }
 };
 
 Gamer.prototype.displayUserTotalScore = function (totalScore) {
-  //if (this.totalScore === gamer1.totalScore) {
-    let refer = $("div#player1TotalScore")
+  if (this.rollValue === gamer1.rollValue) {
+    let refer1 = $("div#player1TotalScore")
     let htmlForPlayer1TotalScore = "";
-    htmlForPlayer1TotalScore += "<p>" + totalScore + "</p>";
-    refer.html(htmlForPlayer1TotalScore);
- // }
-  // } else if (this.totalScore === gamer2.totalScore){
-  //   let refer = $("div#player2TotalScore")
-  //   let htmlForPlayer2TotalScore = "";
-  //   htmlForPlayer2TotalScore += "<p>" + totalScore + "</p>";
-  //   refer.html(htmlForPlayer2TotalScore);
-  // }
-};
-
-Gamer.prototype.displayRollValue = function (rollValue) {
-  //if (rollValue === gamer1.rollValue) {
-    let refer = $("div#player1DieValue");
-    let htmlForPlayer1DieValue = "";
-    htmlForPlayer1DieValue += "<p>" + rollValue + "</p>";
-    refer.html(htmlForPlayer1DieValue);
-  } 
-  // else if (rollValue === gamer2.rollValue) {
-  //   let refer = $("div#player2DieValue");
-  //   let htmlForPlayer2DieValue = "";
-  //   console.log(htmlForPlayer2DieValue);
-  //   htmlForPlayer2DieValue += "<p>" + rollValue + "</p>";
-  //   console.log(htmlForPlayer2DieValue);
-  //   refer.html(htmlForPlayer2DieValue);
-  // }
-//};
-
-let gamer1 = new Gamer("Gamer1", 0, 0);
-let gamer2 = new Gamer("Gamer2", 0, 0);
-
-//Die Business Logic
-function Dice() {
-  this.rollValues = [];
-  //let rollValue=0;
+    htmlForPlayer1TotalScore += "<p>" + this.totalScore + "</p>";
+    refer1.html(htmlForPlayer1TotalScore);
+  }
+  else if (this.rollValue === gamer2.rollValue) {
+    let refer2 = $("div#player2TotalScore")
+    let htmlForPlayer2TotalScore = "";
+    htmlForPlayer2TotalScore += "<p>" + this.totalScore + "</p>";
+    refer2.html(htmlForPlayer2TotalScore);
+  }
 }
 
-let dice = new Dice;
-//let rollValues=[];
-let rollValue = 0;
 
-Dice.prototype.roll = function () {
-  rollValue = Math.floor(Math.random() * 6) + 1;
+
+Gamer.prototype.displayRollValue = function (rollValue) {
+  if (this.rollValue === gamer1.rollValue) {
+    let refer1 = $("div#player1DieValue");
+    let htmlForPlayer1DieValue = "";
+    htmlForPlayer1DieValue += "<p>" + this.rollValue + "</p>";
+    refer1.html(htmlForPlayer1DieValue);
+  }
+  else if (this.rollValue === gamer2.rollValue) {
+    let refer2 = $("div#player2DieValue");
+    let htmlForPlayer2DieValue = "";
+    htmlForPlayer2DieValue += "<p>" + this.rollValue + "</p>";
+    refer2.html(htmlForPlayer2DieValue);
+  }
+};
+
+let gamer1 = new Gamer("Gamer1", 0, 0, 0);
+let gamer2 = new Gamer("Gamer2", 0, 0, 0);
+
+//Die Business Logic
+//function Dice() {
+//this.rollValues = [];
+//let rollValue=0;
+//}
+
+//let dice = new Dice;
+//let rollValues=[];
+//let rollValue = 0;
+
+Gamer.prototype.roll = function () {
+  this.rollValue = Math.floor(Math.random() * 6) + 1;
   // if (rollValue === 1) {
   //   gamer1.currentScore = 0;
   //   console.log(rollValue);
@@ -101,19 +108,18 @@ Dice.prototype.roll = function () {
 
 function attachButtonRollListeners() {
   $("button#player1roll").on("click", function () {
-    dice.roll();
+    gamer1.roll();
     gamer1.updateUserScore(gamer1.currentScore);
+    gamer1.displayRollValue(gamer1.rollValue);
     gamer1.displayUserScore(gamer1.currentScore);
-    gamer1.displayRollValue(rollValue);
+
   });
-   $("button#player2roll").on("click", function () {
-    dice.roll();
-     gamer2.updateUserScore(gamer2.currentScore);
-     console.log(gamer2.currentScore);
-     gamer2.displayUserScore(gamer2.currentScore);
-     gamer2.displayRollValue(rollValue);
-   
-   });
+  $("button#player2roll").on("click", function () {
+    gamer2.roll();
+    gamer2.updateUserScore(gamer2.currentScore);
+    gamer2.displayRollValue(gamer2.rollValue);
+    gamer2.displayUserScore(gamer2.currentScore);
+  });
 };
 
 function attachButtonHoldListeners() {
@@ -122,11 +128,11 @@ function attachButtonHoldListeners() {
     gamer1.displayUserTotalScore(gamer1.totalScore);
     gamer1.currentScore = 0;
   });
-  // $("button#player2hold").on("click", function () {
-  //   gamer2.updateTotalScore(gamer2.currentScore);
-  //   gamer2.displayUserTotalScore(gamer2.totalScore);
-  //   gamer2.currentScore = 0;
-  // });
+  $("button#player2hold").on("click", function () {
+    gamer2.updateTotalScore(gamer2.currentScore);
+    gamer2.displayUserTotalScore(gamer2.totalScore);
+    gamer2.currentScore = 0;
+  });
 }
 
 
